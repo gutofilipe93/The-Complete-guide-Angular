@@ -1,0 +1,1 @@
+ng g c {nomePasta} - Comando usado para criar um componente no angular automaticamente
