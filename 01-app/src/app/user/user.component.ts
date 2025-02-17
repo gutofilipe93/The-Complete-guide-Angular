@@ -13,16 +13,18 @@ const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
 export class UserComponent {
   // selectedUser = signal(DUMMY_USERS[randomIndex]);
   // imagePath = computed(() => 'assets/users/' + this.selectedUser().avatar);
-  @Input({required: true}) avatar!: string;
-  @Input({required: true}) name!:string; 
-  @Input({required: true}) id!: string;
-  @Output() select = new EventEmitter();
+  @Input({required: true}) user!:{
+    id: string,
+    avatar: string,
+    name: string
+  }
+  @Output() select = new EventEmitter<string>();
 
   get imagePath() {
-    return 'assets/users/' + this.avatar
+    return 'assets/users/' + this.user.avatar
   }
 
   onSelectUser (){
-    this.select.emit(this.id);
+    this.select.emit(this.user.id);
   }
 }
